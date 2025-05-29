@@ -7,9 +7,11 @@ import { useNavigate } from 'react-router-dom';
 import Search from '../components/Search';
 import { useLocation } from "react-router-dom";
 
-export default function Home(){
+export default function Home({cartItems}){
 
     const [products, setProducts] = useState([]);
+    // const [cartItems,setCartItems]= useState([])
+
 
     const location = useLocation();
 
@@ -39,12 +41,12 @@ export default function Home(){
 
 
 
-  console.log("products", products)
+  // console.log("products", products)
 
   return (
     <>
-      <Header/>
-      <Search />
+      {/* <Header cartItems={cartItems}/> */}
+      {/* <Search /> */}
 
       <h1 id="products_heading">Latest Products</h1>
 
@@ -68,7 +70,7 @@ export default function Home(){
                   <div className="rating-inner" style={{width:`${product.ratings/5 *100}%`}}></div>
                 </div>
               </div>
-              <p className="card-text">₹{product.price}</p>
+              <p className="card-text">${product.price}</p>
               <Link to={"/product/"+product.product_id} id="view_btn" className="btn btn-block">View Details</Link>
             </div>
           </div>
